@@ -112,13 +112,15 @@ webpackJsonp([0,1],[
 	          }, 1000);
 	        },
 	        formatter: formatter,
-	        matchRange: [2, 5]
+	        matchRange: [0, 5],
+	        placeholder: '123213213',
+	        notfound: 'notfound'
 	      }), _react2.default.createElement(_mention2.default, {
 	        delimiter: '#',
 	        mentionFormatter: function mentionFormatter(data) {
 	          return '#' + data.text + '#';
 	        },
-	        source: this.state.source,
+	        source: _source,
 	        formatter: formatter,
 	        insertMode: 'TEXT_NODE'
 	      }), _react2.default.createElement(_imageUpload2.default, {
@@ -144,7 +146,8 @@ webpackJsonp([0,1],[
 	        _react2.default.createElement(_lib2.default, {
 	          plugins: plugins,
 	          onChange: function onChange(value, delta) {
-	            return _this2.setState({ value: value });
+	            console.log(value);
+	            _this2.setState({ value: value });
 	          },
 	          modules: defaultModules,
 	          ref: function ref(target) {
@@ -55978,6 +55981,8 @@ webpackJsonp([0,1],[
 	          var length = str.length + 1;
 	          this.STORE.bookmark = { index: sel.lastRange.index - length, length: length };
 	        }
+	      } else {
+	        this.runMatcher(false);
 	      }
 	    }
 	  }, {
@@ -56057,7 +56062,9 @@ webpackJsonp([0,1],[
 	      var _props3 = this.props,
 	          prefixCls = _props3.prefixCls,
 	          panelFormatter = _props3.panelFormatter,
-	          loadingRender = _props3.loadingRender;
+	          loadingRender = _props3.loadingRender,
+	          placeholder = _props3.placeholder,
+	          notfound = _props3.notfound;
 
 	      return _react2.default.createElement('div', { ref: function ref(target) {
 	          return _this5.targetEl = target;
@@ -56071,6 +56078,8 @@ webpackJsonp([0,1],[
 	        isLoading: isLoading,
 	        matcherStr: matcherStr,
 	        loadingRender: loadingRender,
+	        placeholder: placeholder,
+	        notfound: notfound,
 	        ref: function ref(panel) {
 	          return _this5.panel = panel;
 	        }
@@ -56138,7 +56147,9 @@ webpackJsonp([0,1],[
 	   */
 	  insertMode: _react.PropTypes.oneOf(["ELEMENT_NODE", "TEXT_NODE"]),
 	  quill: _react.PropTypes.objectOf(_react.PropTypes.any),
-	  loadingRender: _react.PropTypes.func
+	  loadingRender: _react.PropTypes.func,
+	  placeholder: _react.PropTypes.string,
+	  notfound: _react.PropTypes.string
 	};
 	QuillMention.defaultProps = {
 	  delimiter: "@",
