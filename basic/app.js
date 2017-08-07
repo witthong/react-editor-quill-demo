@@ -66,12 +66,19 @@ class App extends React.Component {
         }}
         formatter={formatter}
         matchRange={[0, 5]}
+        mentionFormatter={data => ({
+          label: data.text,
+          value: data.text
+        })}
         placeholder="123213213"
         notfound="notfound"
       />,
       <Meniton
         delimiter="#"
-        mentionFormatter={data => `#${data.text}#`}
+        mentionFormatter={data => ({
+          label: `#${data.text}#`,
+          value: 'data.text'
+        })}
         source={source}
         formatter={formatter}
         insertMode="TEXT_NODE"
